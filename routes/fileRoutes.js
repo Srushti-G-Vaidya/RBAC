@@ -16,10 +16,10 @@ import {
 
 const router = express.Router();
 
-router.post("/", auth, createFile);
 router.get("/", auth, getAllFiles);
+router.post("/", auth, createFile);
 router.get("/:id", auth, filePermission, getFileById);
-router.put("/:id", auth, filePermission, updateFile);
+router.patch("/:id", auth, filePermission, updateFile);
 router.delete("/:id", auth, filePermission, deleteFile);
 router.post("/:id/editors", auth, filePermission, addEditor);
 router.delete("/:id/editors", auth, filePermission, removeEditor);

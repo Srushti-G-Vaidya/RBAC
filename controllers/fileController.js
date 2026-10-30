@@ -92,14 +92,15 @@ const getAllFiles = async (req, res) => {
 // get file by id controller
 
 const getFileById = (req, res) => {
-
     const file = req.file;
 
     return res.json({
         message: "File fetched successfully",
-        data: file
+        data: {
+            ...file.toObject(),
+            permission: req.permission
+        }
     });
-
 };
 
 
@@ -214,7 +215,7 @@ const addEditor = async (req, res) => {
 };
 
 
-// remove editor controller
+// remove editor controllerg
 
 const removeEditor = async (req, res) => {
 

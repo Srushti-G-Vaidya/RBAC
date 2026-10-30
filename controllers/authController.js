@@ -4,10 +4,11 @@ import User from "../models/User.js";
 
 
 // Register controller
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 const register = async (req, res) => {
-
     const { username, email, password } = req.body;
+    // await sleep(3000)
 
     if (!username || !email || !password) {
         return res.json({
@@ -86,7 +87,7 @@ const login = async (req, res) => {
         );
 
         if (!isPasswordCorrect) {
-            return res.json({
+            return res.status(401).json({
                 message: "Invalid credentials"
             });
         }
